@@ -1,10 +1,12 @@
 
 using System;
 using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Utilities;
 using RealityCollective.ServiceFramework.Definitions;
 using RealityCollective.ServiceFramework.Interfaces;
 using Unity.Barracuda;
 using UnityEngine;
+using CreateProfileMenuItemIndices = RealityCollective.ServiceFramework.Definitions.CreateProfileMenuItemIndices;
 
 namespace YoloHolo.Services
 {

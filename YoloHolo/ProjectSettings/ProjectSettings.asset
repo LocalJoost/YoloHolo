@@ -733,8 +733,8 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: LocalJoost
   metroCertificateIssuer: LocalJoost
-  metroCertificateNotAfter: 0037a393158cda01
-  metroApplicationDescription: Template_3D
+  metroCertificateNotAfter: 80b5183f3cebda01
+  metroApplicationDescription: YoloHolo
   wsaImages: {}
   metroTileShortName: YoloHolo
   metroTileShowName: 0

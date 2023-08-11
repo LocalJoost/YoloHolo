@@ -49,6 +49,5 @@ namespace YoloHolo.YoloLabeling
             }
             return null;
         }
-
     }
 }

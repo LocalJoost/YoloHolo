@@ -2,24 +2,69 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Barracuda;
+using UnityEngine;
 
 namespace YoloHolo.Services
 {
     public static class TensorExtensions
     {
         public static List<YoloItem> GetYoloData(this Tensor tensor, IYoloClassTranslator translator, 
-            float minProbability, float overlapThreshold)
+            float minProbability, float overlapThreshold, YoloVersion version = YoloVersion.V7)
         {
+            if (version == YoloVersion.V7)
+            {
+                return tensor.ProcessV7Item(translator, minProbability, overlapThreshold, version);
+            }
+            if (version == YoloVersion.V8)
+            {
+                return tensor.ProcessV8Item(translator, minProbability, overlapThreshold, version);
+            }
+            throw new ArgumentException($"Unsupported Yolo version {version}");
+            
+        }
+
+        private static List<YoloItem> ProcessV7Item(this Tensor tensor, IYoloClassTranslator translator,
+            float minProbability, float overlapThreshold, YoloVersion version)
+        {
+            float maxConfidence = 0;
             var boxesMeetingConfidenceLevel = new List<YoloItem>();
             for (var i = 0; i < tensor.channels; i++)
             {
-                var yoloItem = new YoloItem(tensor, i, translator);
+                var yoloItem = YoloItem.Create(tensor, i, translator, version);
+                maxConfidence = yoloItem.Confidence > maxConfidence ? yoloItem.Confidence : maxConfidence;
                 if (yoloItem.Confidence > minProbability)
                 {
                     boxesMeetingConfidenceLevel.Add(yoloItem);
                 }
             }
 
+            Debug.Log($"max confidence = {maxConfidence}");
+
+            return FindMostLikelyObject(boxesMeetingConfidenceLevel, overlapThreshold);
+        }
+
+        private static List<YoloItem> ProcessV8Item(this Tensor tensor, IYoloClassTranslator translator,
+            float minProbability, float overlapThreshold, YoloVersion version)
+        {
+            float maxConfidence = 0;
+            var boxesMeetingConfidenceLevel = new List<YoloItem>();
+            for (var i = 0; i < tensor.width; i++)
+            {
+                var yoloItem = YoloItem.Create(tensor, i, translator, version);
+                maxConfidence = yoloItem.Confidence > maxConfidence ? yoloItem.Confidence : maxConfidence;
+                if (yoloItem.Confidence > minProbability)
+                {
+                    boxesMeetingConfidenceLevel.Add(yoloItem);
+                }
+            }
+
+            Debug.Log($"max confidence = {maxConfidence}");
+
+            return FindMostLikelyObject(boxesMeetingConfidenceLevel, overlapThreshold);
+        }
+
+        private static List<YoloItem> FindMostLikelyObject(List<YoloItem> boxesMeetingConfidenceLevel, float overlapThreshold)
+        {
             var result = new List<YoloItem>();
             var recognizedTypes = boxesMeetingConfidenceLevel.Select(b => b.MostLikelyObject).Distinct();
             foreach (var objType in recognizedTypes)
@@ -30,6 +75,7 @@ namespace YoloHolo.Services
 
             return result;
         }
+
 
         // Code below largely courtesy of ChatGPT
         private static List<YoloItem> RemoveOverlappingBoxes(

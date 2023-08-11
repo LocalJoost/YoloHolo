@@ -17,7 +17,7 @@ MonoBehaviour:
       reference: c585457f-2408-4e23-a6e4-e76612e61058
     name: Yolo Processor
     priority: 0
-    profile: {fileID: 11400000, guid: f6b28218eb587ae488a3036c073aad39, type: 2}
+    profile: {fileID: 11400000, guid: 733bc21f3a2cde84195848cc8f6bf565, type: 2}
     platformEntries:
       runtimePlatforms:
       - reference: 16a3125f-31d5-4ec6-a120-8be889a74d27

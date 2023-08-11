@@ -1,16 +1,25 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.realitycollective"
+      ]
+    }
+  ],
   "dependencies": {
     "com.microsoft.mixedreality.openxr": "file:MixedReality/com.microsoft.mixedreality.openxr-1.7.0.tgz",
-    "com.microsoft.mrtk.core": "file:MixedReality/com.microsoft.mrtk.core-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.extendedassets": "file:MixedReality/com.microsoft.mrtk.extendedassets-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.graphicstools.unity": "file:MixedReality/com.microsoft.mrtk.graphicstools.unity-0.4.0.tgz",
-    "com.microsoft.mrtk.input": "file:MixedReality/com.microsoft.mrtk.input-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.spatialmanipulation": "file:MixedReality/com.microsoft.mrtk.spatialmanipulation-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.standardassets": "file:MixedReality/com.microsoft.mrtk.standardassets-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.tools": "file:MixedReality/com.microsoft.mrtk.tools-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.uxcomponents": "file:MixedReality/com.microsoft.mrtk.uxcomponents-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.uxcomponents.noncanvas": "file:MixedReality/com.microsoft.mrtk.uxcomponents.noncanvas-3.0.0-pre.14.tgz",
-    "com.microsoft.mrtk.uxcore": "file:MixedReality/com.microsoft.mrtk.uxcore-3.0.0-pre.14.tgz",
+    "com.microsoft.mrtk.core": "file:MixedReality/com.microsoft.mrtk.core-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.extendedassets": "file:MixedReality/com.microsoft.mrtk.extendedassets-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.graphicstools.unity": "file:MixedReality/com.microsoft.mrtk.graphicstools.unity-0.5.12.tgz",
+    "com.microsoft.mrtk.input": "file:MixedReality/com.microsoft.mrtk.input-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.spatialmanipulation": "file:MixedReality/com.microsoft.mrtk.spatialmanipulation-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.standardassets": "file:MixedReality/com.microsoft.mrtk.standardassets-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.tools": "file:MixedReality/com.microsoft.mrtk.tools-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.uxcomponents": "file:MixedReality/com.microsoft.mrtk.uxcomponents-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.uxcomponents.noncanvas": "file:MixedReality/com.microsoft.mrtk.uxcomponents.noncanvas-3.0.0-pre.17.tgz",
+    "com.microsoft.mrtk.uxcore": "file:MixedReality/com.microsoft.mrtk.uxcore-3.0.0-pre.17.tgz",
     "com.realitycollective.service-framework": "1.0.1",
     "com.unity.barracuda": "https://github.com/Unity-Technologies/barracuda-release.git",
     "com.unity.collab-proxy": "1.17.7",
@@ -53,15 +62,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  },
-  "scopedRegistries": [
-    {
-      "name": "package.openupm.com",
-      "url": "https://package.openupm.com",
-      "scopes": [
-        "com.realitycollective"
-      ]
-    }
-  ]
+    "com.unity.modules.xr": "1.0.0",
+    "com.microsoft.mrtk.accessibility": "file:MixedReality/com.microsoft.mrtk.accessibility-3.0.0-pre.17.tgz"
+  }
 }

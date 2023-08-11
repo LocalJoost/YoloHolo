@@ -1,39 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using Unity.Barracuda;
 using UnityEngine;
 
 namespace YoloHolo.Services
 {
-    public class YoloItem
+    public abstract class YoloItem
     {
-        public Vector2 Center { get; }
+        public Vector2 Center { get; protected set; }
 
-        public Vector2 Size { get; }
+        public Vector2 Size { get; protected set; }
 
-        public Vector2 TopLeft { get; }
+        public Vector2 TopLeft { get; protected set; }
 
-        public Vector2 BottomRight { get; }
+        public Vector2 BottomRight { get; protected set; }
 
-        public float Confidence { get; }
+        public float Confidence { get; protected set; }
 
-        public string MostLikelyObject { get; }
+        public string MostLikelyObject { get; protected set; }
 
-        public YoloItem(Tensor tensorData, int boxIndex, IYoloClassTranslator translator)
+        public static YoloItem Create(Tensor tensorData, int boxIndex, IYoloClassTranslator translator,
+            YoloVersion version)
         {
-            Center = new Vector2(tensorData[0, 0, 0, boxIndex], tensorData[0, 0, 1, boxIndex]);
-            Size = new Vector2(tensorData[0, 0, 2, boxIndex], tensorData[0, 0, 3, boxIndex]);
-            TopLeft = Center - Size / 2;
-            BottomRight = Center + Size / 2;
-            Confidence = tensorData[0, 0, 4, boxIndex];
-
-            var classProbabilities = new List<float>();
-            for (var i = 5; i < tensorData.width; i++)
+            if (version == YoloVersion.V7)
             {
-                classProbabilities.Add(tensorData[0, 0, i, boxIndex]);
+                return new YoloV7Item(tensorData, boxIndex, translator);
             }
-            var maxIndex = classProbabilities.IndexOf(classProbabilities.Max());
-            MostLikelyObject = translator.GetName(maxIndex);
+
+            if (version == YoloVersion.V8)
+            {
+                return new YoloV8Item(tensorData, boxIndex, translator);
+            }
+
+            throw new ArgumentException($"Unsupported Yolo version {version}");
         }
     }
 }

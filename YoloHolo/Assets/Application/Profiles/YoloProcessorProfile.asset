@@ -15,7 +15,8 @@ MonoBehaviour:
   configurations: []
   model: {fileID: 5022602860645237092, guid: e0b46301a97a3ac46b3df78149f2eeaa, type: 3}
   minimumProbability: 0.65
-  overlapThreshold: 0.5
+  overlapThreshold: 0.3
   channels: 3
+  version: 7
   classTranslator:
     reference: YoloHolo.YoloLabeling.DemoModelTranslator, Assembly-CSharp

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0871816c5694dc14cb6f1a4bcee8436d, type: 3}
+  m_Name: YoloV8ProcessorProfile
+  m_EditorClassIdentifier: 
+  configurations: []
+  model: {fileID: 5022602860645237092, guid: fcbc9ddf0aefbf546a130dc8b77520f0, type: 3}
+  minimumProbability: 0.65
+  overlapThreshold: 0.3
+  channels: 3
+  version: 8
+  classTranslator:
+    reference: YoloHolo.YoloLabeling.V8AirplaneTranslator, Assembly-CSharp

@@ -26,8 +26,11 @@ namespace YoloHolo.Services
 
         [SerializeField] 
         private int channels = 3;
-
         public int Channels => channels;
+
+        [SerializeField]
+        private YoloVersion version = YoloVersion.V7;
+        public YoloVersion Version => version;
 
         [SerializeField]
         [Implements(typeof(IYoloClassTranslator), TypeGrouping.ByNamespaceFlat)]

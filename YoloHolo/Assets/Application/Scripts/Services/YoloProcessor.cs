@@ -37,7 +37,7 @@ namespace YoloHolo.Services
             inputTensor.Dispose();
 
             var yoloItems = outputTensor.GetYoloData(profile.ClassTranslator, 
-                profile.MinimumProbability, profile.OverlapThreshold);
+                profile.MinimumProbability, profile.OverlapThreshold, profile.Version);
 
             outputTensor.Dispose();
             return yoloItems;

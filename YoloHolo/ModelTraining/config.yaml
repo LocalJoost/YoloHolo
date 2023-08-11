@@ -1,0 +1,6 @@
+train: data
+val : data 
+
+# Classes
+names:
+  0: aircraft

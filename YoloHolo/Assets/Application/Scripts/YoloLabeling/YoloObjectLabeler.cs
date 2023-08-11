@@ -73,6 +73,11 @@ namespace YoloHolo.YoloLabeling
                 await Task.Delay(32);
 
                 var foundObjects = await yoloProcessor.RecognizeObjects(texture);
+                for (var index = 0; index < foundObjects.Count; index++)
+                {
+                    var obj = foundObjects[index];
+                    Debug.Log($"Found: {index} {obj.MostLikelyObject} : {obj.Confidence}");
+                }
 
                 ShowRecognitions(foundObjects, cameraTransform);
                 Destroy(texture);

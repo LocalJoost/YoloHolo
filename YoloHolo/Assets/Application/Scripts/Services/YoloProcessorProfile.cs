@@ -1,6 +1,6 @@
 
 using System;
-using Microsoft.MixedReality.Toolkit;
+using MixedReality.Toolkit;
 using RealityCollective.ServiceFramework.Definitions;
 using RealityCollective.ServiceFramework.Interfaces;
 using Unity.Barracuda;

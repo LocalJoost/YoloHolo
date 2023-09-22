@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.MixedReality.Toolkit;
+using MixedReality.Toolkit;
 
 namespace YoloHolo.Services
 {

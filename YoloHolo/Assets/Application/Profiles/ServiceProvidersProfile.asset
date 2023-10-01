@@ -21,6 +21,24 @@ MonoBehaviour:
     platformEntries:
       runtimePlatforms:
       - reference: 16a3125f-31d5-4ec6-a120-8be889a74d27
+      - reference: 5a504905-0968-4b2f-a537-7fe804f1bd8e
+      - reference: e0d70d45-a52a-4b03-bcdf-8fe367555516
+  - instancedType:
+      reference: 74cb7d73-e972-4bbc-8a54-0165efadd52c
+    name: Image Acquiring Service
+    priority: 0
+    profile: {fileID: 11400000, guid: bf3cf4ad30e290a4386073e0f5725cfe, type: 2}
+    platformEntries:
+      runtimePlatforms:
+      - reference: 16a3125f-31d5-4ec6-a120-8be889a74d27
       - reference: 3dfb96a6-7f67-4f83-835b-32725bc0a2c0
-  initializeOnPlay: 0
+  - instancedType:
+      reference: 74cb7d73-e972-4bbc-8888-0165efadd52c
+    name: ML Image Acquiring Service
+    priority: 1
+    profile: {fileID: 11400000, guid: 4fc0e49ee9091fa4d8b99abdd9a0aad2, type: 2}
+    platformEntries:
+      runtimePlatforms:
+      - reference: e0d70d45-a52a-4b03-bcdf-8fe367555516
+  initializeOnPlay: 1
   doNotDestroyServiceManagerOnLoad: 1

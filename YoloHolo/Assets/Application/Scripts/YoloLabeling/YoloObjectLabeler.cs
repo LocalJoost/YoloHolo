@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RealityCollective.ServiceFramework.Services;
+using TMPro;
 using UnityEngine;
 using YoloHolo.Services;
 using YoloHolo.Utilities;
@@ -13,14 +14,6 @@ namespace YoloHolo.YoloLabeling
     {
         [SerializeField]
         private GameObject labelObject;
-
-        [SerializeField]
-        private int cameraFPS = 4;
-
-        [SerializeField]
-        private Vector2Int requestedCameraSize = new(896, 504);
-
-        private Vector2Int actualCameraSize;
 
         [SerializeField]
         private Vector2Int yoloImageSize = new(320, 256);
@@ -36,55 +29,79 @@ namespace YoloHolo.YoloLabeling
 
         [SerializeField]
         private Renderer debugRenderer;
+        
+        [SerializeField]
+        private TextMeshPro debugText;
 
-        private WebCamTexture webCamTexture;
+        private Vector2Int actualCameraSize;
 
         private IYoloProcessor yoloProcessor;
 
         private readonly List<YoloGameObject> yoloGameObjects = new();
-
+        private IImageAcquiringService imageAcquirer;
 
         private void Start()
         {
             yoloProcessor = ServiceManager.Instance.GetService<IYoloProcessor>();
-            webCamTexture = new WebCamTexture(requestedCameraSize.x, requestedCameraSize.y, cameraFPS);
-            webCamTexture.Play();
+            imageAcquirer = ServiceManager.Instance.GetService<IImageAcquiringService>();
+            imageAcquirer.Initialize(new Vector2Int(yoloImageSize.x, yoloImageSize.y));
             StartRecognizingAsync();
         }
 
+        private Texture2D oldTexture;
         private async Task StartRecognizingAsync()
         {
             await Task.Delay(1000);
-
-            actualCameraSize = new Vector2Int(webCamTexture.width, webCamTexture.height);
-            var renderTexture = new RenderTexture(yoloImageSize.x, yoloImageSize.y, 24); 
-            if (debugRenderer != null && debugRenderer.gameObject.activeInHierarchy)
+            do
             {
-                debugRenderer.material.mainTexture = renderTexture;
-            }
-
+                actualCameraSize = new Vector2Int(imageAcquirer.ActualCameraSize.x, imageAcquirer.ActualCameraSize.y);
+                await Task.Delay(100);
+            } 
+            while (actualCameraSize == Vector2Int.zero);
+            
             while (true)
             {
-                var cameraTransform = Camera.main.CopyCameraTransForm();
-                Graphics.Blit(webCamTexture, renderTexture);
-                await Task.Delay(32);
-
-                var texture = renderTexture.ToTexture2D();
-                await Task.Delay(32);
-
-                var foundObjects = await yoloProcessor.RecognizeObjects(texture);
-                for (var index = 0; index < foundObjects.Count; index++)
+                if (!Application.isPlaying)
                 {
-                    var obj = foundObjects[index];
-                    Debug.Log($"Found: {index} {obj.MostLikelyObject} : {obj.Confidence}");
+                    return;
                 }
+                
+                var cameraTransform = Camera.main.CopyCameraTransForm();
+                var texture = await imageAcquirer.GetImage();
 
-                ShowRecognitions(foundObjects, cameraTransform);
-                Destroy(texture);
-                Destroy(cameraTransform.gameObject);
+                try
+                {
+                    if (debugRenderer != null && debugRenderer.gameObject.activeInHierarchy)
+                    {
+                        debugRenderer.material.mainTexture = texture;
+                    }
+
+                    await Task.Delay(32);
+                    if (oldTexture != null)
+                    {
+                        Destroy(oldTexture);
+                    }
+
+                    var foundObjects = await yoloProcessor.RecognizeObjects(texture);
+                    // create a string with the found objects
+                    debugText.SetText(foundObjects.Aggregate("Found: ", (current, obj) => current + $"{obj.MostLikelyObject} : {obj.Confidence}\n"));
+                    for (var index = 0; index < foundObjects.Count; index++)
+                    {
+                        var obj = foundObjects[index];
+                        Debug.Log($"Found: {index} {obj.MostLikelyObject} : {obj.Confidence}");
+                    }
+
+                    ShowRecognitions(foundObjects, cameraTransform);
+                    Destroy(cameraTransform.gameObject);
+                    oldTexture = texture;
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogWarning(">>> ex " + ex.Message);
+                    debugText.SetText(ex.StackTrace);
+                }
             }
         }
-
 
         private void ShowRecognitions(List<YoloItem> recognitions, Transform cameraTransform)
         {

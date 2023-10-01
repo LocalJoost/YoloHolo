@@ -1,0 +1,32 @@
+{
+    "name": "Magicleap.SetupTool.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e40ba710768534012815d3193fa296cb",
+        "GUID:ec0144320e2ab8c42b9ce084651ff2a1",
+        "GUID:28d8685fae23c21419ef42894cb9b075",
+        "GUID:f9fe0089ec81f4079af78eb2287a6163",
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:92e1f1300db3e504c970bd884323c57b",
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.magicleap.unitysdk",
+            "expression": "0.50.0",
+            "define": "MAGICLEAP"
+        }
+    ],
+    "noEngineReferences": false
+}

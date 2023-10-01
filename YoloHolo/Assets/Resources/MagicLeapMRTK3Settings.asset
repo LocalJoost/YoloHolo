@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5247609917040675880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce23498301390f4fbc7b1a6fb1fff18, type: 3}
+  m_Name: MagicLeapMRTK3SettingsGeneral
+  m_EditorClassIdentifier: 
+  version: 1
+  observeOSHandNavigationSetting: 0
+--- !u!114 &-4117794730850119063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2e6b44fb75a3f47ab63215d3abe592, type: 3}
+  m_Name: MagicLeapMRTK3SettingsPermissionsConfig
+  m_EditorClassIdentifier: 
+  version: 1
+  autoRequestDangerousPermissionsEnabled: 1
+  dangerousPermissions:
+  - permission: android.permission.CAMERA
+    label: CAMERA
+    enabled: 1
+  - permission: android.permission.RECORD_AUDIO
+    label: RECORD_AUDIO
+    enabled: 0
+  - permission: com.magicleap.permission.EYE_TRACKING
+    label: EYE_TRACKING
+    enabled: 0
+  - permission: com.magicleap.permission.VOICE_INPUT
+    label: VOICE_INPUT
+    enabled: 0
+  - permission: com.magicleap.permission.PUPIL_SIZE
+    label: PUPIL_SIZE
+    enabled: 0
+  - permission: com.magicleap.permission.SPATIAL_MAPPING
+    label: SPATIAL_MAPPING
+    enabled: 1
+  - permission: com.magicleap.permission.DEPTH_CAMERA
+    label: DEPTH_CAMERA
+    enabled: 0
+  - permission: com.magicleap.permission.EYE_CAMERA
+    label: EYE_CAMERA
+    enabled: 0
+  - permission: com.magicleap.permission.SPACE_IMPORT_EXPORT
+    label: SPACE_IMPORT_EXPORT
+    enabled: 0
+  normalPermissions:
+  - permission: com.magicleap.permission.HAND_TRACKING
+    label: HAND_TRACKING
+    enabled: 0
+  permissionCallbackHandler: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 580a25c45ba0ca345964fa2a19d5edf9, type: 3}
+  m_Name: MagicLeapMRTK3Settings
+  m_EditorClassIdentifier: 
+  version: 1
+  generalSettings: {fileID: -5247609917040675880}
+  rigConfig: {fileID: 3916853492808860607}
+  permissionsConfig: {fileID: -4117794730850119063}
+--- !u!114 &3916853492808860607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91172bda11840954aa86ef249377b850, type: 3}
+  m_Name: MagicLeapMRTK3SettingsRigConfig
+  m_EditorClassIdentifier: 
+  version: 1
+  runtimeRigConfigEnabled: 1
+  controllerPrefabsToAdd:
+  - {fileID: 2066940876909342129, guid: 774356060c9021d4eb3d0307c9bf4276, type: 3}
+  inputActionAssetsToAdd:
+  - {fileID: -944628639613478452, guid: a7b3d28b346833f4ea10936be7a9f18c, type: 3}
+  leftHandModelPrefab: {fileID: 3125928580450356558, guid: 71c8412ef64fa0849b1f8cc1b89d306b, type: 3}
+  rightHandModelPrefab: {fileID: 9135055858856669871, guid: 416f3102c5291bc418c62064ade9eb99, type: 3}
+  overrideInputActionPaths: 1
+  actionPathOverrides:
+  - actionRef: {fileID: -5982496924579745919, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 5671224385460781980, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/devicePosition
+  - actionRef: {fileID: -4531104493956672492, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/deviceRotation
+  - actionRef: {fileID: 6972639530819350904, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -2024308242397127297, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/pointerPosition
+  - actionRef: {fileID: 8248158260566104461, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/pointerRotation
+  - actionRef: {fileID: -7363382999065477798, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -6131295136447488360, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/pinchPressed
+  - actionRef: {fileID: -294446728694031702, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/pinch
+  - actionRef: {fileID: 1263111715868034790, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 737890489006591557, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -4084014799535200556, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -7613329581162844239, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/trackingState
+  - actionRef: {fileID: 7779212132400271959, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 1010738217276881514, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -6395602842196007441, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{LeftHand}/pinchPressed
+  - actionRef: {fileID: 83097790271614945, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -1813146318149588949, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/devicePosition
+  - actionRef: {fileID: 5820880757197039143, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/deviceRotation
+  - actionRef: {fileID: -8198699208435500284, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -3326005586356538449, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/pointerPosition
+  - actionRef: {fileID: 5101698808175986029, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/pointerRotation
+  - actionRef: {fileID: -5913262927076077117, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 187161793506945269, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/pinchPressed
+  - actionRef: {fileID: 2995356199736570127, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/pinch
+  - actionRef: {fileID: -8061240218431744966, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 2307464322626738743, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -8270564778575511633, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 3239510804178183174, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/trackingState
+  - actionRef: {fileID: 875253871413052681, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: -6493913391331992944, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: 
+  - actionRef: {fileID: 3279264004350380116, guid: 18c412191cdc9274897f101c7fd5316f, type: 3}
+    overridePath: <MagicLeapAuxiliaryHandDevice>{RightHand}/pinchPressed

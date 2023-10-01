@@ -11,7 +11,7 @@ namespace YoloHolo.Services
     public class MLImageAcquiringService : BaseServiceWithConstructor, IImageAcquiringService
     {
         private readonly ImageAcquiringServiceProfile profile;
-        private Vector2Int requestedImageSize;
+        private Vector2Int imageSize;
 
         public MLImageAcquiringService(string name, uint priority, ImageAcquiringServiceProfile profile)
             : base(name, priority)
@@ -21,7 +21,7 @@ namespace YoloHolo.Services
 
         public void Initialize(Vector2Int requestedImageSize)
         {
-            this.requestedImageSize = requestedImageSize;
+            imageSize = requestedImageSize;
         }
 
         public override void Start()
@@ -235,7 +235,7 @@ namespace YoloHolo.Services
 
             if (renderTexture == null)
             {
-                renderTexture = new RenderTexture(requestedImageSize.x, requestedImageSize.y, 24);
+                renderTexture = new RenderTexture(imageSize.x, imageSize.y, 24);
             }
             Graphics.Blit(videoTexture, renderTexture);
             await Task.Delay(32);
@@ -245,7 +245,6 @@ namespace YoloHolo.Services
         private static Texture2D FlipTextureVertically(Texture2D original)
         {
             var originalPixels = original.GetPixels();
-
             var newPixels = new Color[originalPixels.Length];
 
             var width = original.width;

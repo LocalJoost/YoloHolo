@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configurations: []
   cameraFPS: 4
-  requestedCameraSize: {x: 320, y: 256}
+  requestedCameraSize: {x: 640, y: 480}

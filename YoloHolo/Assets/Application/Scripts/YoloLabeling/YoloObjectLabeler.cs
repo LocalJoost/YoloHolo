@@ -51,13 +51,20 @@ namespace YoloHolo.YoloLabeling
         private Texture2D oldTexture;
         private async Task StartRecognizingAsync()
         {
+            debugText.SetText("StartRecognizingAsync");
             await Task.Delay(1000);
             do
             {
                 actualCameraSize = new Vector2Int(imageAcquirer.ActualCameraSize.x, imageAcquirer.ActualCameraSize.y);
-                await Task.Delay(100);
+                if (actualCameraSize == Vector2Int.zero)
+                {
+                    debugText.SetText("Waiting for camera size");
+                    await Task.Delay(100);
+                }
             } 
             while (actualCameraSize == Vector2Int.zero);
+            
+            debugText.SetText($"Actual camera size: {actualCameraSize.x} {actualCameraSize.y}");
             
             while (true)
             {
@@ -83,8 +90,11 @@ namespace YoloHolo.YoloLabeling
                     }
 
                     var foundObjects = await yoloProcessor.RecognizeObjects(texture);
-                    // create a string with the found objects
-                    debugText.SetText(foundObjects.Aggregate("Found: ", (current, obj) => current + $"{obj.MostLikelyObject} : {obj.Confidence}\n"));
+                    if (foundObjects.Count > 0)
+                    {
+                        debugText.SetText(foundObjects.Aggregate("Found: ", (current, obj) => current + $"{obj.MostLikelyObject} : {obj.Confidence}\n"));
+                    }
+                    
                     for (var index = 0; index < foundObjects.Count; index++)
                     {
                         var obj = foundObjects[index];

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Barracuda;
+using Unity.Sentis;
 using UnityEngine;
 
 namespace YoloHolo.Services
 {
     public static class TensorExtensions
     {
-        public static List<YoloItem> GetYoloData(this Tensor tensor, IYoloClassTranslator translator, 
+        public static List<YoloItem> GetYoloData(this Tensor<float> tensor, IYoloClassTranslator translator, 
             float minProbability, float overlapThreshold, YoloVersion version = YoloVersion.V7)
         {
             if (version == YoloVersion.V7)
@@ -23,12 +23,12 @@ namespace YoloHolo.Services
             
         }
 
-        private static List<YoloItem> ProcessV7Item(this Tensor tensor, IYoloClassTranslator translator,
+        private static List<YoloItem> ProcessV7Item(this Tensor<float> tensor, IYoloClassTranslator translator,
             float minProbability, float overlapThreshold, YoloVersion version)
         {
             float maxConfidence = 0;
             var boxesMeetingConfidenceLevel = new List<YoloItem>();
-            for (var i = 0; i < tensor.channels; i++)
+            for (var i = 0; i < tensor.shape[1]; i++)
             {
                 var yoloItem = YoloItem.Create(tensor, i, translator, version);
                 maxConfidence = yoloItem.Confidence > maxConfidence ? yoloItem.Confidence : maxConfidence;
@@ -43,12 +43,12 @@ namespace YoloHolo.Services
             return FindMostLikelyObject(boxesMeetingConfidenceLevel, overlapThreshold);
         }
 
-        private static List<YoloItem> ProcessV8Item(this Tensor tensor, IYoloClassTranslator translator,
+        private static List<YoloItem> ProcessV8Item(this Tensor<float> tensor, IYoloClassTranslator translator,
             float minProbability, float overlapThreshold, YoloVersion version)
         {
             float maxConfidence = 0;
             var boxesMeetingConfidenceLevel = new List<YoloItem>();
-            for (var i = 0; i < tensor.width; i++)
+            for (var i = 0; i < tensor.shape[2]; i++)
             {
                 var yoloItem = YoloItem.Create(tensor, i, translator, version);
                 maxConfidence = yoloItem.Confidence > maxConfidence ? yoloItem.Confidence : maxConfidence;

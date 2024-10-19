@@ -1,5 +1,5 @@
 ﻿using System;
-using Unity.Barracuda;
+using Unity.Sentis;
 using UnityEngine;
 
 namespace YoloHolo.Services
@@ -18,7 +18,7 @@ namespace YoloHolo.Services
 
         public string MostLikelyObject { get; protected set; }
 
-        public static YoloItem Create(Tensor tensorData, int boxIndex, IYoloClassTranslator translator,
+        public static YoloItem Create(Tensor<float> tensorData, int boxIndex, IYoloClassTranslator translator,
             YoloVersion version)
         {
             if (version == YoloVersion.V7)

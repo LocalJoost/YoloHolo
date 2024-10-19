@@ -3,7 +3,7 @@ using System;
 using MixedReality.Toolkit;
 using RealityCollective.ServiceFramework.Definitions;
 using RealityCollective.ServiceFramework.Interfaces;
-using Unity.Barracuda;
+using Unity.Sentis;
 using UnityEngine;
 
 namespace YoloHolo.Services
@@ -13,8 +13,8 @@ namespace YoloHolo.Services
     public class YoloProcessorProfile : BaseServiceProfile<IServiceModule>
     {
         [SerializeField]
-        private NNModel model;
-        public NNModel Model => model;
+        private ModelAsset model;
+        public ModelAsset Model => model;
 
         [SerializeField]
         private float minimumProbability = 0.65f;

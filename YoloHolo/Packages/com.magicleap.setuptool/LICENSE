@@ -1,0 +1,5 @@
+IMPORTANT: PLEASE READ THIS NOTICE CAREFULLY BEFORE USING THE MAGIC LEAP 2 DEVELOPER RESOURCES PUBLISHED ON THIS WEBSITE.
+
+Welcome, and thank you for exploring our Magic Leap 2 developer resources. Please note that your use of the ML2 developer resources in this repository is governed by the Magic Leap 2 Software License Agreement, the latest version of which is available at https://www.magicleap.com/software-license-agreement-ml2(the "ML2 LICENSE AGREEMENT").
+
+By downloading any of the ML2 developer resources, YOU REPRESENT YOU HAVE READ, UNDERSTAND, AND AGREE TO BE BOUND BY THE TERMS AND CONDITIONS OF THE ML2 LICENSE AGREEMENT, and the materials contained this repository are deemed SDK Materials (as defined in the ML2 License Agreement). IF YOU DO NOT AGREE TO THE ML2 LICENSE AGREEMENT, THEN YOU MAY NOT CONTINUE WITH THE DOWNLOAD OR USE OF THE DEVELOPER RESOURCES PUBLISHED ON THIS WEBSITE.
